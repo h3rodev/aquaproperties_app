@@ -1,4 +1,4 @@
-# awesome_app
+# AQUA Properties Flutter Mobile App
 
 A new Flutter project.
 

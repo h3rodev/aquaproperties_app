@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:aquaproperties_app/utils/custom_colors.dart';
 
-import 'package:aquaproperties_app/widgets/Services.dart';
+import 'package:aquaproperties_app/services/Services.dart';
 import 'package:aquaproperties_app/models/user_model.dart';
 import 'package:aquaproperties_app/pages/user_details.dart';
 

@@ -40,14 +40,20 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.transparent,
-        leading: GestureDetector(
-          onTap: () {
-
-          },
-          child: const Icon(
-            Icons.menu,
-            color: CustomColors.primaryColor,
-          ),
+        automaticallyImplyLeading: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            IconButton(
+              onPressed: () => {},
+              icon: const Icon(
+                Icons.menu_rounded,
+                color: CustomColors.primaryDarkColor,
+                size: 30.0,
+              ),
+            ),
+          ],
         ),
       ),
       body: PageView.builder(
@@ -62,7 +68,7 @@ class HomePage extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
+            padding: const EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
