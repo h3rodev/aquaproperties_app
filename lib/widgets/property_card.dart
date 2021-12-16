@@ -7,13 +7,12 @@ import 'package:aquaproperties_app/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-final formatCurrency =
-    NumberFormat.simpleCurrency(decimalDigits: 0, name: 'AED ');
-
 class PropertyCard extends StatelessWidget {
-  const PropertyCard({Key? key, required this.property}) : super(key: key);
+  PropertyCard({Key? key, required this.property}) : super(key: key);
 
   final Property property;
+  final formatCurrency =
+      NumberFormat.simpleCurrency(decimalDigits: 0, name: 'AED ');
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -60,9 +59,35 @@ class PropertyCard extends StatelessWidget {
                         topLeft: Radius.circular(30.0),
                         topRight: Radius.circular(30.0),
                       ),
-                      child: PropertySlider(
-                        gallery: property.imagesPath!,
-                        width: 60,
+                      child: Stack(
+                        children: [
+                          PropertySlider(
+                            gallery: property.imagesPath,
+                            width: 60,
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(20.0),
+                            width: MediaQuery.of(context).size.width,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const SizedBox(),
+                                Container(
+                                  padding: const EdgeInsets.all(6.0),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    color: Colors.black.withOpacity(0.2),
+                                  ),
+                                  child: const Icon(
+                                    Icons.favorite_border,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                        ],
                       ),
                     ),
                   ),
@@ -89,7 +114,7 @@ class PropertyCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         CTitleText(
-                          title: formatCurrency.format(property.price!),
+                          title: formatCurrency.format(property.price),
                           size: 18.0,
                           color: CustomColors.primaryDarkColor,
                           fontWeight: FontWeight.bold,
@@ -97,7 +122,7 @@ class PropertyCard extends StatelessWidget {
                         const SizedBox(height: 8.0),
                         CTitleText(
                           title:
-                              '${property.categoryName!} for ${property.propertyFor}'
+                              '${property.categoryName} for ${property.propertyFor}'
                                   .toUpperCase(),
                           size: 12.0,
                           color: CustomColors.primaryDarkColor,
@@ -111,7 +136,7 @@ class PropertyCard extends StatelessWidget {
                               color: CustomColors.primaryAssentColor,
                             ),
                             const SizedBox(width: 4.0),
-                            Container(
+                            SizedBox(
                               width: MediaQuery.of(context).size.width - 130,
                               child: CTitleText(
                                 title:

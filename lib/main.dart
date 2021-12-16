@@ -1,8 +1,6 @@
 import 'package:aquaproperties_app/pages/home_page.dart';
 import 'package:aquaproperties_app/pages/property_page.dart';
 
-// import 'package:awesome_app/user_page.dart';
-
 import 'package:flutter/material.dart';
 
 void main() {

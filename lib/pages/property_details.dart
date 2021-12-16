@@ -1,17 +1,18 @@
+import 'package:aquaproperties_app/models/property_model.dart';
 import 'package:aquaproperties_app/widgets/custom_property_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-import 'package:aquaproperties_app/models/property_model.dart';
 import 'package:aquaproperties_app/utils/custom_colors.dart';
 
-final formatCurrency =
-    NumberFormat.simpleCurrency(decimalDigits: 0, name: 'AED ');
+
 
 class PropertyDetails extends StatelessWidget {
-  const PropertyDetails({Key? key, required this.property}) : super(key: key);
+  PropertyDetails({Key? key, required this.property}) : super(key: key);
 
   final Property property;
+  
+  final formatCurrency =
+    NumberFormat.simpleCurrency(decimalDigits: 0, name: 'AED ');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +58,7 @@ class PropertyDetails extends StatelessWidget {
             elevation: 0.0,
             flexibleSpace: FlexibleSpaceBar(
               background: PropertySlider(
-                gallery: property.imagesPath!,
+                gallery: property.imagesPath,
                 width: 0.0,
               ),
             ),
@@ -78,14 +79,14 @@ class PropertyDetails extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'FOR ${property.propertyFor!.toUpperCase()}',
+                      'FOR ${property.propertyFor}'.toUpperCase(),
                       style: const TextStyle(
                         fontSize: 14,
                         color: CustomColors.primaryDarkColor,
                       ),
                     ),
                     Text(
-                      property.title!,
+                      property.title,
                       style: const TextStyle(
                         fontSize: 24.0,
                       ),
@@ -100,7 +101,7 @@ class PropertyDetails extends StatelessWidget {
                     ),
                     const SizedBox(height: 8.0),
                     Text(
-                      formatCurrency.format(property.price!),
+                      formatCurrency.format(property.price),
                       style: const TextStyle(
                         fontSize: 24,
                         color: CustomColors.primaryColor,
@@ -117,7 +118,7 @@ class PropertyDetails extends StatelessWidget {
                           color: CustomColors.primaryDarkColor,
                         ),
                         Text(
-                          property.beds ?? '',
+                          '${property.beds}',
                           style: const TextStyle(
                             fontSize: 12,
                             color: CustomColors.primaryDarkColor,
@@ -130,7 +131,7 @@ class PropertyDetails extends StatelessWidget {
                           color: CustomColors.primaryDarkColor,
                         ),
                         Text(
-                          property.baths ?? '',
+                          '${property.baths}',
                           style: const TextStyle(
                             fontSize: 12,
                             color: CustomColors.primaryDarkColor,
@@ -143,7 +144,7 @@ class PropertyDetails extends StatelessWidget {
                           color: CustomColors.primaryDarkColor,
                         ),
                         Text(
-                          '${property.parking ?? ''}',
+                          '${property.parking}',
                           style: const TextStyle(
                             fontSize: 12,
                             color: CustomColors.primaryDarkColor,
@@ -154,7 +155,7 @@ class PropertyDetails extends StatelessWidget {
                     ),
                     const SizedBox(height: 16.0),
                     Text(
-                      property.description ?? '',
+                      property.description,
                       style: const TextStyle(
                         fontSize: 14,
                         color: CustomColors.primaryDarkColor,

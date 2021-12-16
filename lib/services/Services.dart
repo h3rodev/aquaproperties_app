@@ -1,9 +1,36 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, avoid_print
+import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
+import 'dart:io';
 
 import 'package:aquaproperties_app/models/property_model.dart';
 import 'package:aquaproperties_app/models/user_model.dart';
 
-import 'package:http/http.dart' as http;
+Future<String> getFilePath() async {
+  // Directory appDocumentsDirectory = await getApplicationSupportDirectory();
+  final directory = await getApplicationDocumentsDirectory();
+  String appDocumentsPath = directory.path;
+
+  String filePath = '$appDocumentsPath/propertyData.txt';
+
+  return filePath;
+}
+
+void saveFile(data) async {
+  File file = File(await getFilePath());
+  file.writeAsString(data);
+}
+
+Future<String> readFile() async {
+  File file = File(await getFilePath());
+  String fileContent = await file.readAsString();
+  if(fileContent.isNotEmpty){
+    return fileContent;
+  } else {
+    return ' ';
+  }
+  
+}
 
 class Services {
   static const String url =
@@ -24,21 +51,31 @@ class Services {
     }
   }
 
-  static const String aquaPropertiesUrl =
-      'https://aquaproperties.com/api/properties';
-
   static Future<List<Property>> getProperties() async {
-    try {
-      final response = await http.get(Uri.parse(aquaPropertiesUrl));
-      if (200 == response.statusCode) {
-        final List<Property> properties = propertyFromJson(response.body);
+    const String aquaPropertiesUrl =
+        'https://aquaproperties.com/api/properties';
 
-        return properties;
-      } else {
+    List<Property> properties = [];
+    final dataString = await readFile();
+    
+    if (dataString.length > 1) {
+      return propertyFromJson(dataString);
+    } else {
+      try {
+        final response = await http.get(Uri.parse(aquaPropertiesUrl));
+
+        if (200 == response.statusCode) {
+          properties = propertyFromJson(response.body);
+
+          saveFile(response.body);
+
+          return properties;
+        } else {
+          return <Property>[];
+        }
+      } catch (e) {
         return <Property>[];
       }
-    } catch (e) {
-      return <Property>[];
     }
   }
 }

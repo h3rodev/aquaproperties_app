@@ -4,12 +4,12 @@
 
 import 'dart:convert';
 
-List<Property> propertyFromJson(String str) => List<Property>.from(json.decode(str).map((x) => Property.fromJson(x)));
+List<PropertyDetailsData> propertyDetailsFromJson(String str) => List<PropertyDetailsData>.from(json.decode(str).map((x) => PropertyDetailsData.fromJson(x)));
 
-String propertyToJson(List<Property> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String propertyDetailsToJson(List<PropertyDetailsData> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Property {
-    Property({
+class PropertyDetailsData {
+    PropertyDetailsData({
         required this.id,
         required this.title,
         required this.slug,
@@ -67,7 +67,7 @@ class Property {
     String? residentialFeatures;
     String description;
 
-    factory Property.fromJson(Map<String, dynamic> json) => Property(
+    factory PropertyDetailsData.fromJson(Map<String, dynamic> json) => PropertyDetailsData(
         id: json["id"],
         title: json["title"],
         slug: json["slug"],

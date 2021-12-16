@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:aquaproperties_app/utils/custom_colors.dart';
 import 'package:aquaproperties_app/widgets/custom_text.dart';
 import 'package:aquaproperties_app/widgets/responsive_buttom.dart';
+import 'package:aquaproperties_app/services/Services.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     final List homeTitle = [
       'Properties For Sale',
       'Properties For Rent',
@@ -109,19 +111,22 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Column(
-                  children: List.generate(homeTitle.length, (indexDots) {
-                    return Container(
-                      margin: const EdgeInsets.only(bottom: 4),
-                      width: 8,
-                      height: index == indexDots ? 25 : 8,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: index == indexDots
-                            ? CustomColors.primaryColor
-                            : CustomColors.primaryColor.withOpacity(0.5),
-                      ),
-                    );
-                  }),
+                  children: List.generate(
+                    homeTitle.length,
+                    (indexDots) {
+                      return Container(
+                        margin: const EdgeInsets.only(bottom: 4),
+                        width: 8,
+                        height: index == indexDots ? 25 : 8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: index == indexDots
+                              ? CustomColors.primaryColor
+                              : CustomColors.primaryColor.withOpacity(0.5),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
