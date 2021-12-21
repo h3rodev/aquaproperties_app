@@ -24,7 +24,7 @@ class UserDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                    backgroundImage: NetworkImage(user.profilePictureUrl!),
+                    backgroundImage: NetworkImage(user.profilePicture!),
                     radius: 50.0,
                     onBackgroundImageError: (exception, stackTrace) {
                       const CircleAvatar(
@@ -33,11 +33,12 @@ class UserDetails extends StatelessWidget {
                           'assets/aqua-emblem.png',
                         ),
                       );
+                      exception;
                     },
                   ),
                   const SizedBox(height: 16.0),
                   Text(
-                    user.fullName!,
+                    user.privateName,
                     style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -77,11 +78,12 @@ class UserDetails extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 8.0),
-                        Text(
-                          '${user.languages!.map((lang) => lang.name)}',
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: CustomColors.primaryDarkColor,
+                        Column(
+                          children: List.generate(
+                            user.language!.split(",").length,
+                            (i) {
+                              return Text(user.language!.split(",")[i]);
+                            },
                           ),
                         ),
                       ],
@@ -101,11 +103,12 @@ class UserDetails extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 8.0),
-                        Text(
-                          '${user.spLocations!.map((spLoc) => spLoc.name)}',
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: CustomColors.primaryDarkColor,
+                        Column(
+                          children: List.generate(
+                            user.areas!.split(",").length,
+                            (i) {
+                              return Text(user.areas!.split(",")[i]);
+                            },
                           ),
                         ),
                       ],

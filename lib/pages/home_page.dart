@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:aquaproperties_app/utils/custom_colors.dart';
 import 'package:aquaproperties_app/widgets/custom_text.dart';
 import 'package:aquaproperties_app/widgets/responsive_buttom.dart';
-import 'package:aquaproperties_app/services/Services.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,26 +14,31 @@ class HomePage extends StatelessWidget {
       'Properties For Sale',
       'Properties For Rent',
       'Off Plan Properties',
+      'AQUA Properties Team',
     ];
     final List homeSubTitle = [
       'Buy A Property In Dubai',
       'Rent A Property In Dubai',
       'Find The Right Community To Invest In Dubai',
+      '',
     ];
     final List homeContent = [
       "Dubai is a vibrant, cosmopolitan city offering the world's tallest skyscrapers and most lavish villas. There is an array of leasehold and freehold properties to choose from while looking for properties for sale in Dubai.",
       "Renting a property in Dubai can be a tiring process if not done with an experienced leasing consultant.",
       "Despite some yesteryear economic challenges in UAE, land continues to be one among the foremost robust and resilient industries within the country. Dubai has been among the highest emirates that is still thriving with the important estate business, because it has proven to be adaptive to the some temporary while some perpetual changes in the market.",
+      "",
     ];
     final List homeImages = [
       'assets/properties-for-sale.png',
       'assets/properties-for-rent.png',
+      'assets/offplan-properties.png',
       'assets/offplan-properties.png'
     ];
     final List homeLinks = [
       '/properties-for-sale',
       '/properties-for-rent',
       '/offplan',
+      '/users',
     ];
 
     final PageController controller = PageController();
@@ -103,7 +107,7 @@ class HomePage extends StatelessWidget {
                         icon: Icons.double_arrow,
                         color: CustomColors.primaryColor,
                         isResponsive: false,
-                        text: 'View Properties',
+                        text: 'View',
                         url: homeLinks[index],
                         width: 210.0,
                       ),

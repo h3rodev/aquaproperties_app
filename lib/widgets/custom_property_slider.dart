@@ -37,14 +37,14 @@ class PropertySlider extends StatelessWidget {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(left:16.0,bottom: 16.0),
+              margin: const EdgeInsets.only(left: 16.0, bottom: 16.0),
               alignment: Alignment.bottomCenter,
               child: Row(
                 children: List.generate(
                   galUrl.length,
                   (indexDots) {
                     return Container(
-                      margin: const EdgeInsets.only(left:4.0),
+                      margin: const EdgeInsets.only(left: 4.0),
                       height: index == indexDots ? 12 : 8,
                       width: index == indexDots ? 12 : 8,
                       decoration: BoxDecoration(

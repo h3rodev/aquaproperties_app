@@ -34,7 +34,7 @@ Future<String> readFile() async {
 
 class Services {
   static const String url =
-      'https://api.rexcrm.com/users/feed/usersInJson?api_key=YHAHALMIMSABDJAD';
+      'https://aquaproperties.com/api/agents';
 
   static Future<List<User>> getUsers() async {
     try {

@@ -102,7 +102,7 @@ class _UserPageState extends State<UserPage> {
                                 flex: 1,
                                 child: CircleAvatar(
                                   backgroundImage:
-                                      NetworkImage(user.profilePictureUrl!),
+                                      NetworkImage(user.profilePicture!),
                                   radius: 50.0,
                                   backgroundColor: CustomColors.primaryColor,
                                   onBackgroundImageError:
@@ -118,7 +118,7 @@ class _UserPageState extends State<UserPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      user.fullName!,
+                                      user.privateName,
                                       style: const TextStyle(
                                         fontSize: 18,
                                         color: CustomColors.primaryColor,
@@ -140,7 +140,7 @@ class _UserPageState extends State<UserPage> {
                                         ),
                                         const SizedBox(width: 4.0),
                                         Text(
-                                          user.publicPhone!,
+                                          user.mobile,
                                           style: const TextStyle(
                                             fontSize: 12,
                                             color:
@@ -158,7 +158,7 @@ class _UserPageState extends State<UserPage> {
                                         ),
                                         const SizedBox(width: 4.0),
                                         Text(
-                                          user.publicEmail ?? '',
+                                          user.email,
                                           style: const TextStyle(
                                             fontSize: 12,
                                             color:
